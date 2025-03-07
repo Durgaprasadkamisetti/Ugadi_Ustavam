@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rashtriya Swayamsevak Sangh</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            color: #FFA500;
+            background: linear-gradient(to right, #FF8C00, #FFD700);
+        }
+        #container {
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            margin-top: 20px;
+            background: #FFE4B5;
+            box-shadow: 0px 0px 10px rgba(188, 162, 162, 0.2);
+        }
+        #ganaveshaSection {
+            padding: 20px;
+            border-radius: 10px;
+            display: none;
+            border: 1px solid #ccc;
+            background: #fff3e0;
+            margin-top: 10px;
+        }
+        .input-group {
+            margin: 10px 0;
+            text-align: left;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background: #ff6f61;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: #ff4f41;
+        }
+    </style>
+    <script>
+        function checkUniform() {
+            let bhag = document.getElementById("bhag").value;
+            let ghatanayak = document.getElementById("ghatanayak").value;
+            let name = document.getElementById("name").value;
+            let mobile = document.getElementById("mobile").value;
+            
+            if (bhag === "" || ghatanayak === "" || name === "" || mobile === "") {
+                alert("Please fill all fields");
+                return;
+            }
+            
+            let greeting = "Namaste, " + name + " garu!";
+            document.getElementById("greeting").innerText = greeting;
+            document.getElementById("ganaveshaSection").style.display = "block";
+        }
+        
+        function submitGanavesha() {
+            let requiredItems = ["shirt", "pant", "belt", "cap", "shoes"];
+            let missingItems = [];
+            
+            requiredItems.forEach(item => {
+                if (!document.getElementById(item).checked) {
+                    missingItems.push(item.charAt(0).toUpperCase() + item.slice(1));
+                }
+            });
+            
+            let message = "";
+            if (missingItems.length === 0) {
+                message = "You have all of these items.";
+            } else {
+                message = "You are missing: " + missingItems.join(", ") + ". If you need any items, please contact 9490364947, 7780580216, 8374552361.";
+            }
+            document.getElementById("result").innerText = message;
+        }
+    </script>
+</head>
+<body>
+    <div id="container">
+        <h1>Rashtriya Swayamsevak Sangh</h1>
+        <h2>UGADI USTAVAM 2025 - Rajamahendravaram</h2>
+        
+        <h3>Date: 30 March 2025</h3>
+        <h3>Time: 4 PM</h3>
+        <h3>Place: Shivalayam, Quarry Market Junction</h3>
+        
+        <div class="input-group">
+            <label for="bhag">Bhag:</label>
+            <input type="text" id="bhag">
+        </div>
+        
+        <div class="input-group">
+            <label for="ghatanayak">Ghatanayak:</label>
+            <input type="text" id="ghatanayak">
+        </div>
+        
+        <div class="input-group">
+            <label for="name">Enter Name:</label>
+            <input type="text" id="name">
+        </div>
+        
+        <div class="input-group">
+            <label for="mobile">Enter Mobile Number:</label>
+            <input type="text" id="mobile">
+        </div>
+        
+        <button onclick="checkUniform()">Submit</button>
+        
+        <h3 id="greeting"></h3>
+        
+        <div id="ganaveshaSection">
+            <h4>Select GANAVESHA Items:</h4>
+            <input type="checkbox" id="shirt"> Shirt <br>
+            <input type="checkbox" id="pant"> Pant <br>
+            <input type="checkbox" id="belt"> Belt <br>
+            <input type="checkbox" id="cap"> Cap <br>
+            <input type="checkbox" id="shoes"> Shoes <br>
+            <button onclick="submitGanavesha()">Submit GANAVESHA</button>
+            <h3 id="result"></h3>
+        </div>
+    </div>
+</body>
+</html>
